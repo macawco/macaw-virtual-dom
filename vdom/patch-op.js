@@ -79,7 +79,7 @@ function stringPatch(domNode, leftVNode, vText, renderOptions) {
     return newNode
 }
 
-function commentPatch(domNode, leftVNode, vText, renderOptions) {
+function commentPatch(domNode, leftVNode, vNode, renderOptions) {
     var parentNode = domNode.parentNode
     var newNode = renderOptions.render(vNode, renderOptions)
 
