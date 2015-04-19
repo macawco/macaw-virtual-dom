@@ -19,6 +19,8 @@ function applyPatch(vpatch, domNode, renderOptions) {
             return insertNode(domNode, patch, renderOptions)
         case VPatch.VTEXT:
             return stringPatch(domNode, vNode, patch, renderOptions)
+        case VPatch.VCOMMENT:
+            return commentPatch(domNode, vNode, patch, renderOptions)
         case VPatch.WIDGET:
             return widgetPatch(domNode, vNode, patch, renderOptions)
         case VPatch.VNODE:
@@ -72,6 +74,17 @@ function stringPatch(domNode, leftVNode, vText, renderOptions) {
         if (parentNode && newNode !== domNode) {
             parentNode.replaceChild(newNode, domNode)
         }
+    }
+
+    return newNode
+}
+
+function commentPatch(domNode, leftVNode, vText, renderOptions) {
+    var parentNode = domNode.parentNode
+    var newNode = renderOptions.render(vNode, renderOptions)
+
+    if (parentNode && newNode !== domNode) {
+        parentNode.replaceChild(newNode, domNode)
     }
 
     return newNode

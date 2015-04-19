@@ -1,5 +1,6 @@
 var isVNode = require("./is-vnode")
 var isVText = require("./is-vtext")
+var isVComment = require("./is-vcomment")
 var isWidget = require("./is-widget")
 var isThunk = require("./is-thunk")
 
@@ -32,6 +33,7 @@ function renderThunk(thunk, previous) {
 
     if (!(isVNode(renderedThunk) ||
             isVText(renderedThunk) ||
+            isVComment(renderedThunk) ||
             isWidget(renderedThunk))) {
         throw new Error("thunk did not return a valid node");
     }
