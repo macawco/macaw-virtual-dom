@@ -69,7 +69,7 @@ function walk(a, b, patch, index) {
         if (!isVComment(a)) {
             apply = appendPatch(apply, new VPatch(VPatch.VCOMMENT, a, b))
             applyClear = true
-        } else if (a.text !== b.text) {
+        } else if (a.data !== b.data) {
             apply = appendPatch(apply, new VPatch(VPatch.VCOMMENT, a, b))
         }
     } else if (isWidget(b)) {
